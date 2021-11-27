@@ -1,18 +1,38 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserController } from './user/user.controller';
-import { CarController } from './car/car.controller';
-import { CarService } from './car/car.service';
-import { UserService } from './user/user.service';
-import { UserModule } from './user/user.module';
-import { CarModule } from './car/car.module';
-import { DrivingController } from './driving/driving.controller';
+import { UsersModule } from './users/users.module';
+import { CarModule } from './car/cars.module';
 import { DrivingModule } from './driving/driving.module';
+import { AuthService } from './auth/auth.service';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [UserModule, CarModule, DrivingModule],
-  controllers: [AppController, UserController, CarController, DrivingController],
-  providers: [AppService, CarService, UserService],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: '.env',
+    }),
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      database: process.env.DB,
+      host: process.env.DB_HOST,
+      username: process.env.DB_USER,
+      port: 3306,
+      password: process.env.DB_PASS,
+      entities: [__dirname + '/**/entities/*.entity{.ts,.js'],
+      synchronize: true,
+      autoLoadEntities: true,
+      legacySpatialSupport: false,
+    }),
+    UsersModule,
+    CarModule,
+    DrivingModule,
+    AuthModule,
+  ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
