@@ -8,6 +8,7 @@ import { CarModule } from './car/cars.module';
 import { DrivingModule } from './driving/driving.module';
 import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
+import Connection from 'mysql2/typings/mysql/lib/Connection';
 
 @Module({
   imports: [
@@ -35,4 +36,6 @@ import { AuthModule } from './auth/auth.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private connection: Connection) {}
+}

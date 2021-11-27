@@ -4,7 +4,7 @@ import { SignInDto } from './dto/signin.dto';
 import { UsersService } from './users.service';
 import { User } from '../entites/user.entity';
 
-@Controller('user')
+@Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
