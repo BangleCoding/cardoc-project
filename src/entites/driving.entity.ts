@@ -6,16 +6,16 @@ import {
   PrimaryColumn,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Usercar } from './userCar.entity';
+import { Mycar } from './mycar.entity';
 
 @Entity()
 export class Driving {
   @PrimaryColumn()
-  @ManyToOne((type) => Usercar, (usercar) => usercar.userId)
+  @ManyToOne((type) => Mycar, (mycar) => mycar.userId)
   userId: string;
 
   @PrimaryColumn()
-  @ManyToOne((type) => Usercar, (usercar) => usercar.trimId)
+  @ManyToOne((type) => Mycar, (mycar) => mycar.trimId)
   trimId: string;
 
   @Column()

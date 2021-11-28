@@ -1,18 +1,9 @@
-import {
-  Column,
-  Entity,
-  Generated,
-  ManyToOne,
-  OneToMany,
-  PrimaryColumn,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
 import { Car } from './car.entity';
-import { Driving } from './driving.entity';
 import { User } from './user.entity';
 
 @Entity()
-export class Usercar {
+export class Mycar {
   @PrimaryColumn()
   @ManyToOne((type) => User, (user) => user.userId)
   userId: string;

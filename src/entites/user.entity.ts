@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { InternalServerErrorException } from '@nestjs/common';
-import { Usercar } from './userCar.entity';
+import { Mycar } from './mycar.entity';
 
 @Entity()
 export class User {
@@ -19,7 +19,7 @@ export class User {
   id: number;
 
   @PrimaryColumn()
-  @OneToMany((type) => Usercar, (usercar) => usercar.userId)
+  @OneToMany((type) => Mycar, (mycar) => mycar.userId)
   userId: string;
 
   @Column()
