@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
-import { CarModule } from './car/cars.module';
+import { CarsModule } from './cars/cars.module';
 import { DrivingModule } from './driving/driving.module';
 import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
@@ -29,13 +29,11 @@ import Connection from 'mysql2/typings/mysql/lib/Connection';
       legacySpatialSupport: false,
     }),
     UsersModule,
-    CarModule,
+    CarsModule,
     DrivingModule,
     AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {
-  constructor(private connection: Connection) {}
-}
+export class AppModule {}
